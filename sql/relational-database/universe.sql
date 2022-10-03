@@ -2,8 +2,8 @@
 -- PostgreSQL database dump
 --
 
--- Dumped from database version 14.1
--- Dumped by pg_dump version 14.1
+-- Dumped from database version 12.9 (Ubuntu 12.9-2.pgdg20.04+1)
+-- Dumped by pg_dump version 12.9 (Ubuntu 12.9-2.pgdg20.04+1)
 
 SET statement_timeout = 0;
 SET lock_timeout = 0;
@@ -18,13 +18,13 @@ SET row_security = off;
 
 DROP DATABASE universe;
 --
--- Name: universe; Type: DATABASE; Schema: -; Owner: postgres
+-- Name: universe; Type: DATABASE; Schema: -; Owner: freecodecamp
 --
 
-CREATE DATABASE universe WITH TEMPLATE = template0 ENCODING = 'UTF8' LOCALE = 'English_Canada.1252';
+CREATE DATABASE universe WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'C.UTF-8' LC_CTYPE = 'C.UTF-8';
 
 
-ALTER DATABASE universe OWNER TO postgres;
+ALTER DATABASE universe OWNER TO freecodecamp;
 
 \connect universe
 
@@ -44,7 +44,21 @@ SET default_tablespace = '';
 SET default_table_access_method = heap;
 
 --
--- Name: galaxy; Type: TABLE; Schema: public; Owner: postgres
+-- Name: country; Type: TABLE; Schema: public; Owner: freecodecamp
+--
+
+CREATE TABLE public.country (
+    country_id integer NOT NULL,
+    name character varying(128),
+    a integer NOT NULL,
+    b integer NOT NULL
+);
+
+
+ALTER TABLE public.country OWNER TO freecodecamp;
+
+--
+-- Name: galaxy; Type: TABLE; Schema: public; Owner: freecodecamp
 --
 
 CREATE TABLE public.galaxy (
@@ -59,10 +73,10 @@ CREATE TABLE public.galaxy (
 );
 
 
-ALTER TABLE public.galaxy OWNER TO postgres;
+ALTER TABLE public.galaxy OWNER TO freecodecamp;
 
 --
--- Name: galaxy_galaxy_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: galaxy_galaxy_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE public.galaxy ALTER COLUMN galaxy_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -76,7 +90,7 @@ ALTER TABLE public.galaxy ALTER COLUMN galaxy_id ADD GENERATED ALWAYS AS IDENTIT
 
 
 --
--- Name: moon; Type: TABLE; Schema: public; Owner: postgres
+-- Name: moon; Type: TABLE; Schema: public; Owner: freecodecamp
 --
 
 CREATE TABLE public.moon (
@@ -92,10 +106,10 @@ CREATE TABLE public.moon (
 );
 
 
-ALTER TABLE public.moon OWNER TO postgres;
+ALTER TABLE public.moon OWNER TO freecodecamp;
 
 --
--- Name: moon_moon_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: moon_moon_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE public.moon ALTER COLUMN moon_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -109,7 +123,7 @@ ALTER TABLE public.moon ALTER COLUMN moon_id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- Name: planet; Type: TABLE; Schema: public; Owner: postgres
+-- Name: planet; Type: TABLE; Schema: public; Owner: freecodecamp
 --
 
 CREATE TABLE public.planet (
@@ -125,10 +139,10 @@ CREATE TABLE public.planet (
 );
 
 
-ALTER TABLE public.planet OWNER TO postgres;
+ALTER TABLE public.planet OWNER TO freecodecamp;
 
 --
--- Name: planet_planet_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: planet_planet_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE public.planet ALTER COLUMN planet_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -142,7 +156,7 @@ ALTER TABLE public.planet ALTER COLUMN planet_id ADD GENERATED ALWAYS AS IDENTIT
 
 
 --
--- Name: star; Type: TABLE; Schema: public; Owner: postgres
+-- Name: star; Type: TABLE; Schema: public; Owner: freecodecamp
 --
 
 CREATE TABLE public.star (
@@ -158,10 +172,10 @@ CREATE TABLE public.star (
 );
 
 
-ALTER TABLE public.star OWNER TO postgres;
+ALTER TABLE public.star OWNER TO freecodecamp;
 
 --
--- Name: star_star_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+-- Name: star_star_id_seq; Type: SEQUENCE; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE public.star ALTER COLUMN star_id ADD GENERATED ALWAYS AS IDENTITY (
@@ -175,59 +189,166 @@ ALTER TABLE public.star ALTER COLUMN star_id ADD GENERATED ALWAYS AS IDENTITY (
 
 
 --
--- Data for Name: galaxy; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: country; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-
-
---
--- Data for Name: moon; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
+INSERT INTO public.country VALUES (1, 'a', 1, 2);
+INSERT INTO public.country VALUES (2, 'a', 2, 2);
+INSERT INTO public.country VALUES (3, 'a', 3, 2);
 
 
 --
--- Data for Name: planet; Type: TABLE DATA; Schema: public; Owner: postgres
+-- Data for Name: galaxy; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-
-
---
--- Data for Name: star; Type: TABLE DATA; Schema: public; Owner: postgres
---
-
-
-
---
--- Name: galaxy_galaxy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
---
-
-SELECT pg_catalog.setval('public.galaxy_galaxy_id_seq', 1, false);
+INSERT INTO public.galaxy OVERRIDING SYSTEM VALUE VALUES (1, 'a', 'a', 1, 1, 1000, true, false);
+INSERT INTO public.galaxy OVERRIDING SYSTEM VALUE VALUES (6, 'b', 'a', 1, 2, 1000, true, false);
+INSERT INTO public.galaxy OVERRIDING SYSTEM VALUE VALUES (7, 'b', 'a', 1, 3, 1000, true, false);
+INSERT INTO public.galaxy OVERRIDING SYSTEM VALUE VALUES (8, 'b', 'a', 1, 4, 1000, true, false);
+INSERT INTO public.galaxy OVERRIDING SYSTEM VALUE VALUES (9, 'b', 'a', 1, 5, 1000, true, false);
+INSERT INTO public.galaxy OVERRIDING SYSTEM VALUE VALUES (10, 'b', 'a', 1, 6, 1000, true, false);
+INSERT INTO public.galaxy OVERRIDING SYSTEM VALUE VALUES (11, 'b', 'a', 1, 7, 1000, true, false);
 
 
 --
--- Name: moon_moon_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Data for Name: moon; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.moon_moon_id_seq', 1, false);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (1, 'b', 'a', 1, 1, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (2, 'b', 'a', 1, 2, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (3, 'b', 'a', 1, 3, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (4, 'b', 'a', 1, 4, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (5, 'b', 'a', 1, 5, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (6, 'b', 'a', 1, 6, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (7, 'b', 'a', 1, 7, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (8, 'b', 'a', 1, 8, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (9, 'b', 'a', 1, 9, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (10, 'b', 'a', 1, 10, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (11, 'b', 'a', 1, 11, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (12, 'b', 'a', 1, 12, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (13, 'b', 'a', 1, 13, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (14, 'b', 'a', 1, 14, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (15, 'b', 'a', 1, 15, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (16, 'b', 'a', 1, 16, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (17, 'b', 'a', 1, 17, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (18, 'b', 'a', 1, 18, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (19, 'b', 'a', 1, 19, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (20, 'b', 'a', 1, 20, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (21, 'b', 'a', 1, 21, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (22, 'b', 'a', 1, 22, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (23, 'b', 'a', 1, 23, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (24, 'b', 'a', 1, 24, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (25, 'b', 'a', 1, 25, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (26, 'b', 'a', 1, 26, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (27, 'b', 'a', 1, 27, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (28, 'b', 'a', 1, 28, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (29, 'b', 'a', 1, 29, 1000, true, false, 28);
+INSERT INTO public.moon OVERRIDING SYSTEM VALUE VALUES (30, 'b', 'a', 1, 30, 1000, true, false, 28);
 
 
 --
--- Name: planet_planet_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Data for Name: planet; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.planet_planet_id_seq', 1, false);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (1, 'b', 'a', 1, 1, 1000, true, false, 10);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (2, 'b', 'a', 1, 2, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (3, 'b', 'a', 1, 3, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (4, 'b', 'a', 1, 4, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (5, 'b', 'a', 1, 5, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (6, 'b', 'a', 1, 6, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (7, 'b', 'a', 1, 7, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (8, 'b', 'a', 1, 8, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (9, 'b', 'a', 1, 9, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (10, 'b', 'a', 1, 10, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (11, 'b', 'a', 1, 11, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (12, 'b', 'a', 1, 12, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (13, 'b', 'a', 1, 13, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (14, 'b', 'a', 1, 14, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (15, 'b', 'a', 1, 15, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (16, 'b', 'a', 1, 16, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (17, 'b', 'a', 1, 17, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (18, 'b', 'a', 1, 18, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (19, 'b', 'a', 1, 19, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (20, 'b', 'a', 1, 20, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (21, 'b', 'a', 1, 21, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (22, 'b', 'a', 1, 22, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (23, 'b', 'a', 1, 23, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (24, 'b', 'a', 1, 24, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (25, 'b', 'a', 1, 25, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (26, 'b', 'a', 1, 26, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (27, 'b', 'a', 1, 27, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (28, 'b', 'a', 1, 28, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (29, 'b', 'a', 1, 29, 1000, true, false, 11);
+INSERT INTO public.planet OVERRIDING SYSTEM VALUE VALUES (30, 'b', 'a', 1, 30, 1000, true, false, 11);
 
 
 --
--- Name: star_star_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
+-- Data for Name: star; Type: TABLE DATA; Schema: public; Owner: freecodecamp
 --
 
-SELECT pg_catalog.setval('public.star_star_id_seq', 1, false);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (1, 'b', 'a', 1, 1, 1000, true, false, 1);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (5, 'b', 'a', 1, 2, 1000, true, false, 10);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (6, 'b', 'a', 1, 3, 1000, true, false, 11);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (8, 'b', 'a', 1, 4, 1000, true, false, 9);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (9, 'b', 'a', 1, 5, 1000, true, false, 8);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (10, 'b', 'a', 1, 6, 1000, true, false, 7);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (11, 'b', 'a', 1, 7, 1000, true, false, 7);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (12, 'b', 'a', 1, 8, 1000, true, false, 7);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (13, 'b', 'a', 1, 9, 1000, true, false, 7);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (14, 'b', 'a', 1, 10, 1000, true, false, 7);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (15, 'b', 'a', 1, 11, 1000, true, false, 7);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (16, 'b', 'a', 1, 12, 1000, true, false, 7);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (17, 'b', 'a', 1, 13, 1000, true, false, 7);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (18, 'b', 'a', 1, 14, 1000, true, false, 7);
+INSERT INTO public.star OVERRIDING SYSTEM VALUE VALUES (19, 'b', 'a', 1, 15, 1000, true, false, 7);
 
 
 --
--- Name: galaxy galaxy_category_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: galaxy_galaxy_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
+--
+
+SELECT pg_catalog.setval('public.galaxy_galaxy_id_seq', 11, true);
+
+
+--
+-- Name: moon_moon_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
+--
+
+SELECT pg_catalog.setval('public.moon_moon_id_seq', 30, true);
+
+
+--
+-- Name: planet_planet_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
+--
+
+SELECT pg_catalog.setval('public.planet_planet_id_seq', 30, true);
+
+
+--
+-- Name: star_star_id_seq; Type: SEQUENCE SET; Schema: public; Owner: freecodecamp
+--
+
+SELECT pg_catalog.setval('public.star_star_id_seq', 19, true);
+
+
+--
+-- Name: country country_a_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.country
+    ADD CONSTRAINT country_a_key UNIQUE (a);
+
+
+--
+-- Name: country country_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
+--
+
+ALTER TABLE ONLY public.country
+    ADD CONSTRAINT country_pkey PRIMARY KEY (country_id);
+
+
+--
+-- Name: galaxy galaxy_category_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.galaxy
@@ -235,7 +356,7 @@ ALTER TABLE ONLY public.galaxy
 
 
 --
--- Name: galaxy galaxy_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: galaxy galaxy_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.galaxy
@@ -243,7 +364,7 @@ ALTER TABLE ONLY public.galaxy
 
 
 --
--- Name: moon moon_category_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: moon moon_category_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.moon
@@ -251,7 +372,7 @@ ALTER TABLE ONLY public.moon
 
 
 --
--- Name: moon moon_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: moon moon_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.moon
@@ -259,7 +380,7 @@ ALTER TABLE ONLY public.moon
 
 
 --
--- Name: planet planet_category_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: planet planet_category_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.planet
@@ -267,7 +388,7 @@ ALTER TABLE ONLY public.planet
 
 
 --
--- Name: planet planet_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: planet planet_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.planet
@@ -275,7 +396,7 @@ ALTER TABLE ONLY public.planet
 
 
 --
--- Name: star star_category_key; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: star star_category_key; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.star
@@ -283,7 +404,7 @@ ALTER TABLE ONLY public.star
 
 
 --
--- Name: star star_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+-- Name: star star_pkey; Type: CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.star
@@ -291,7 +412,7 @@ ALTER TABLE ONLY public.star
 
 
 --
--- Name: star fk_galaxy; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: star fk_galaxy; Type: FK CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.star
@@ -299,7 +420,7 @@ ALTER TABLE ONLY public.star
 
 
 --
--- Name: moon fk_planet; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: moon fk_planet; Type: FK CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.moon
@@ -307,7 +428,7 @@ ALTER TABLE ONLY public.moon
 
 
 --
--- Name: planet fk_star; Type: FK CONSTRAINT; Schema: public; Owner: postgres
+-- Name: planet fk_star; Type: FK CONSTRAINT; Schema: public; Owner: freecodecamp
 --
 
 ALTER TABLE ONLY public.planet
